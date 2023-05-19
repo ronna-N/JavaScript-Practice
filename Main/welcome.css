@@ -30,6 +30,8 @@ body {
     height: 100vh;
     background-color: var(--body-color);
     transition: var(--tran-4);
+    overflow-x: hidden;
+
 }
 
 body.dark {
@@ -44,6 +46,15 @@ body.dark {
     --search-input-color: #FFFBF8;
 }
 
+body.dark .switch::before {
+    left: 24px;
+    transition: var(--tran-3);
+
+}
+
+body.dark .sidebar header .toggle {
+    color: var(--text-color);
+}
 
 /* ====== Reusable CSS ======  */
 .sidebar .text {
@@ -62,6 +73,8 @@ body.dark {
 }
 
 /*  ====== Sidebar ====== */
+
+
 .sidebar {
     position: fixed;
     top: 0;
@@ -73,9 +86,6 @@ body.dark {
     transition: var(--tran-5);
     z-index: 100;
 }
-.sidebar .menu{
-    margin-top: 22px;
-}
 
 .sidebar.close {
     width: 88px;
@@ -85,14 +95,8 @@ body.dark {
     opacity: 0;
 }
 
-.sidebar.close .search-box {
-    transition: var(--tran-3);
-    background: var(--slidebar-color);
-}
-
-.sidebar.close .search-input {
-    transition: var(--tran-3);
-    background: var(--slidebar-color)
+.sidebar .menu {
+    margin-top: 22px;
 }
 
 .sidebar li {
@@ -123,21 +127,21 @@ body.dark {
     position: relative;
 }
 
-.sidebar .image-text img {
-    width: 40px;
-    border-radius: 6px;
-}
-
 .sidebar header .image-text {
     display: flex;
     align-items: center;
 
 }
 
+.sidebar .image-text img {
+    width: 40px;
+    border-radius: 6px;
+}
+
 header .image-text .header-text {
     display: flex;
     flex-direction: column;
-    
+
 }
 
 .header-text .name {
@@ -170,14 +174,20 @@ header .image-text .header-text {
     transition: var(--tran-3);
 }
 
+.sidebar .menu-bar {
+    height: calc(100% - 50px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.sidebar .menu {
+    margin-top: 22px;
+}
+
 .sidebar .search-box {
     border-radius: 18px 0px 18px 0px;
     background: var(--search-box-color);
-}
-
-
-body.dark .sidebar header .toggle {
-    color: var(--text-color);
 }
 
 .search-box input {
@@ -189,6 +199,16 @@ body.dark .sidebar header .toggle {
     border: none;
     border-radius: 0px 0px 18px 0px;
     background: var(--search-box-color);
+}
+
+.sidebar.close .search-box {
+    transition: var(--tran-3);
+    background: var(--slidebar-color);
+}
+
+.sidebar.close .search-input {
+    transition: var(--tran-3);
+    background: var(--slidebar-color)
 }
 
 .sidebar li a {
@@ -210,13 +230,6 @@ body.dark .sidebar header .toggle {
     color: var(--slidebar-color);
 }
 
-.sidebar .menu-bar {
-    height: calc(100% - 50px);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
 .menu-bar .bottom-content .mode .moon-sun {
     height: 50px;
     width: 60px;
@@ -234,18 +247,18 @@ body.dark .sidebar header .toggle {
     opacity: 0;
 }
 
+.menu-bar .mode {
+    position: relative;
+    border-radius: 6px;
+
+}
+
 body.dark .menu-bar .mode i.sun {
     opacity: 1;
 }
 
 body.dark .menu-bar .mode i.moon {
     opacity: 0;
-}
-
-.menu-bar .mode {
-    position: relative;
-    border-radius: 6px;
-
 }
 
 .menu-bar .mode .toggle-switch {
@@ -281,22 +294,16 @@ body.dark .menu-bar .mode i.moon {
 
 }
 
-body.dark .switch::before {
-    left: 24px;
-    transition: var(--tran-3);
-
-}
-
 .home {
     position: relative;
     left: 250px;
     height: 100vh;
-    width: calc(100% -88px);
+    width: calc(100% - 88px);
     background: var(--body-color);
     transition: var(--tran-5);
 }
 
-.home .text{
+.home .text {
     font-size: 30px;
     font-weight: 500;
     color: var(--text-color);
@@ -305,6 +312,6 @@ body.dark .switch::before {
 
 .sidebar.close~.home {
     left: 88px;
-    width: calc(100% -88px);
+    width: calc(100% - 88px);
 
 }
