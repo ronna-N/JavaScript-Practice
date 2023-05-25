@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Booleans Practice</title>
+</head>
+
+<body>
+  <h3>Heads or Tails</h3>
+  <button onclick="
+      const headsBtn = Math.random();
+      headsBtn < 0.5 ? alert('You win') : alert('You lose')
+  ">Heads</button>
+  <button onclick="
+      const tailsBtn = Math.random();
+      tailsBtn > 0.5 ? alert('You win') : alert('You lose')
+  ">Tails</button>
+
+
+
+  <script>
+    const number = Math.random();
+    let result = '';
+    const guess = 'Heads';
+
+    if (number < 0.5) {
+      console.log('Heads')
+      result = 'Heads';
+    } else {
+      console.log('Tails')
+      result = 'Tails';
+    }
+
+    result === guess ? console.log('You win') : console.log('You lose')
+
+    const hour = 5;
+    const name = 'Ronna';
+
+    if (hour >= 6 && hour <= 12) {
+      console.log(`Good Morning ${name}!`)
+    } else if (hour >= 13 && hour <= 17) {
+      console.log(`Good Afternoon ${name}!`)
+    } else {
+      console.log(`Good Night ${name}!`)
+    }
+
+    const age = 5;
+    const isHoliday = true;
+
+    if (isHoliday && (age <= 6 || age >= 65)) {
+      console.log('You get a Discount')
+    } else {
+      console.log('No Discount')
+    }
+
+    /*
+        console.log(typeof true);
+        false;
+        
+            console.log(3 < 5);
+            console.log(3 > 5);
+            console.log(0 <= 0)
+            console.log(0 <= 0)
+            console.log(0 <= 0)
+            console.log(0 === 0)
+            console.log(0 !== 0)
+    
+        if (true) {
+          console.log('Hello')
+    
+        } else {
+          console.log('else?')
+        }
+    
+        if (age >= 16) {
+          console.log('You can drive')
+          console.log('Congrats !')
+        } else if (age >= 14) {
+          console.log('Almost there!')
+        }
+        else {
+          console.log('Not your time')
+        }
+
+        //Logical Opreators = combine booleam values
+        console.log(true && false);
+        console.log(0.2 >= 0 && 0.2 < 1 / 3);
+        console.log(true || false);
+        console.log(!true);
+
+        //Truthy = not fulsy values and Fulsy = false 0 '' NaN undefined null
+        if (0) {
+          console.log('truthy');
+        }
+    
+        const cartQuanity = 5;
+    
+        if (cartQuanity > 0) {
+          console.log('cart has products');
+        }
+        //this cart also has a truthy value so console print
+        if (cartQuanity) {
+          console.log('cart has products');
+        }
+    
+        console.log(!0);
+    
+        //this is NaN value
+        console.log('Text' / 5);
+    
+        let variable1 = undefined;
+        console.log(variable1);
+    
+
+        //Ternary Operator
+        true ? 'truthy' : 'falsy';
+        //shortcut of this 
+        if (true) {
+          'truthy'
+        } else {
+          'falsy'
+        };
+        const result = 0 ? 'truthy' : 'falsy';
+        console.log(result);
+
+        //Guard Operator
+        false && console.log('Hello');
+        //shortcut of this
+        if (false) {
+          console.log('Hello');
+        }
+
+        const message = 5 && 'Hello'
+        console.log(message);
+        //shortcut of this
+        let condition;
+        if (5) {
+          condition = 'World'
+          console.log(condition);
+        }
+
+        //Defualt Operator
+        const currency = 0 || 'USD';
+        console.log(currency);
+*/
+
+  </script>
+</body>
+
+</html>
