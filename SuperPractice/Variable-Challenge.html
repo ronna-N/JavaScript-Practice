@@ -7,29 +7,41 @@
 
 <body>
   <div>
-    <button onclick="calculation += '7'; console.log(calculation)">7</button>
-    <button onclick="calculation += '8'; console.log(calculation)"">8</button>
-    <button onclick=" calculation +='9' ; console.log(calculation)"">9</button>
+    <button onclick="updateCalculator('7')">7</button>
+    <button onclick="updateCalculator('8')">8</button>
+    <button onclick="updateCalculator('9')">9</button>
   </div>
   <div>
-    <button onclick="calculation += '4'; console.log(calculation)">4</button>
-    <button onclick="calculation += '5'; console.log(calculation)"">5</button>
-    <button onclick=" calculation +='6' ; console.log(calculation)"">6</button>
+    <button onclick="updateCalculator('4')">4</button>
+    <button onclick="updateCalculator('5')">5</button>
+    <button onclick="updateCalculator('6')">6</button>
   </div>
   <div>
-    <button onclick="calculation += '1'; console.log(calculation)">1</button>
-    <button onclick="calculation += '2'; console.log(calculation)"">2</button>
-    <button onclick=" calculation +='3' ; console.log(calculation)"">3</button>
+    <button onclick="updateCalculator('1')">1</button>
+    <button onclick="updateCalculator('2')">2</button>
+    <button onclick="updateCalculator('3')">3</button>
   </div>
+  <button onclick="updateCalculator('+')">+</button>
+  <button onclick="updateCalculator('-')">-</button>
+  <button onclick="calculate()">=</button>
 
-
-  <button onclick="calculation += ' + '; console.log(calculation)">+</button>
-  <button onclick="calculation += ' - '; console.log(calculation)">-</button>
-  <button onclick="eval(calculation); calculation=eval(calculation) ; console.log(calculation)">=</button>
 </body>
 <script>
   let calculation = '';
   //eval(calculation) convert the calculation string into the actual math
+
+  function updateCalculator(input) {
+    calculation += input;
+    console.log(calculation);
+  };
+
+  function calculate() {
+    eval(calculation);
+    calculation = eval(calculation);
+    console.log(calculation);
+  };
+
+
 </script>
 
 </html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Fucntion</title>
+</head>
+
+<body>
+
+
+  <script>
+    greet('Simon');
+    greet('Ronna');
+    greet();
+    console.log(convertToFahrenheit(25));
+    console.log(convertToCelsius(86));
+    console.log(convertTemperature(25,'F'));
+    /*
+    //create Function + Function_name(rule as variable name) + {what this function do here} then you calling the function or execute the fucntion
+    function function1() {
+      console.log('Hello');
+      console.log(2 + 2);
+    } 
+
+    function1();
+    function1();
+    
+
+    //parameter name same rule as variable name 
+    function calculateTax(cost, taxPercent = 0.1) {
+
+      console.log(cost * taxPercent);
+      console.log(taxPercent);
+
+    }
+    calculateTax(2000, 0.2);
+    calculateTax(5000);
+    */
+
+    function greet(name) {
+      if (!name) {
+        console.log(`Hi there`);
+      } else {
+        console.log(`Hello ${name}`);
+      }
+
+    };
+
+    function convertToFahrenheit(celsius) {
+      const Fahrenheit = ((celsius * 9 / 5) + 32);
+      return Fahrenheit;
+    };
+
+    function convertToCelsius(fahrenheit) {
+      const Celsius = ((fahrenheit - 32) * 5 / 9);
+      return Celsius;
+    };
+
+
+    function convertTemperature (degree, unit) {
+
+      let convertTemp = '';
+
+      if (unit === 'C' || 'c') {
+        convertTemp = convertToFahrenheit(degree) + 'F'
+
+      } else if  (unit === 'F' || 'f') {
+        convertTemp = convertToCelsius(degree) + 'C'
+      }
+
+      return convertTemp;
+    }
+
+
+
+  </script>
+</body>
+
+</html>

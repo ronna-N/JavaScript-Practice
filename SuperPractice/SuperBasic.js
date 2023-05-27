@@ -1,5 +1,5 @@
-const audio = new Audio("enna-sound.mp3")
-const buttons = document.querySelector("Enna")
+const audio = new Audio("enna-sound.mp3");
+const buttons = document.querySelector("Enna");
 
 buttons.array.forEach(Enna => {
   Enna.addEventListener("click", () => {
@@ -26,3 +26,4 @@ function printPomu() {
     outputDiv.appendChild(pomuEnergy);
   }
 }
+

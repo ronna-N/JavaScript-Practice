@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Rock Paper Scissors Object</title>
+</head>
+
+<body>
+  <h3>Rock Paper Scissors</h3>
+  <button onclick="
+      playGame('Rock');
+  ">Rock</button>
+
+  <button onclick="
+      playGame('Paper');
+  ">Paper</button>
+
+  <button onclick="
+      playGame('Scissors');
+  ">Scissors</button>
+  <div>
+    <button onclick="resetScore()">Reset Score</button>
+    <button onclick="fckBitch()">Enna
+    </button>
+    <button onclick="showScore()">Show Score</button>
+
+  </div>
+
+
+  <script>
+    //this Gobal Variable bc its can use anywhere
+    const audio = new Audio("enna-sound.mp3");
+    function fckBitch() {
+      audio.play();
+      console.log('F*cking Bitch')
+    }
+
+
+    // 4 after we store the score to localStorage the we need to return the score into the object here and also set the score value together by using JSON.parse to tunr score to javascript object so our code can use it again
+    // 7 but we can use truthy and falsy by using || if the score is truthy so use data from localStorage but if the score is falsy use a default value instead
+    
+    let score = JSON.parse(localStorage.getItem('score')) || {
+      wins: 0,
+      losses: 0,
+      ties: 0
+    }
+    // 5 Here if the score reset it will turn the localStorage to nothing or null so we have to has a default value of the score by using if statement
+
+    // 6 (!score) null = falsy so we can use ! operator
+    /*
+        if (!score) {
+          score = {
+            wins: 0,
+            losses: 0,
+            ties: 0
+          }
+        }
+    */
+
+    function resetScore() {
+      score.wins = 0;
+      score.losses = 0;
+      score.ties = 0;
+      console.log(score);
+      localStorage.removeItem('score');
+      alert('Score was reset');
+    };
+
+
+
+    function showScore() {
+      alert(`Now Score is Wins: ${score.wins}, Lossse: ${score.losses}, Ties: ${score.ties}`);
+    };
+    function playGame(playerMove) {
+
+      const compMove = pickCompMove();
+      let result = '';
+
+      if (playerMove === 'Scissors') {
+
+        if (compMove === 'Rock') {
+          result = 'You lose.';
+          console.log('You lose.')
+
+        } else if (compMove === 'Paper') {
+          result = 'You win.';
+          console.log('You win.')
+
+        } else {
+          result = 'Tie.';
+          console.log('Tie.')
+        }
+
+      } else if (playerMove === 'Paper') {
+        if (compMove === 'Rock') {
+          result = 'You win.';
+          console.log('You win.')
+        } else if (compMove === 'Paper') {
+          result = 'Tie.';
+          console.log('Tie.')
+        } else {
+          result = 'You lose.';
+          console.log('You lose.')
+        }
+      } else if (playerMove === 'Rock') {
+        if (compMove === 'Rock') {
+          result = 'Tie.';
+          console.log('Tie.')
+        } else if (compMove === 'Paper') {
+          result = 'You lose.';
+          console.log('You lose.')
+        } else {
+          result = 'You win.';
+          console.log('You win.')
+        }
+      }
+
+      //here we after delete score = {wins:0,losses:0,ties:0} the object score is empty bracket so now we add property into the object by score.wins/score.losses/score.ties
+
+      if (result === 'You win.') {
+        score.wins += 1;
+      } else if (result === 'You lose.') {
+        score.losses += 1;
+      } else if (result === 'Tie.') {
+        score.ties += 1;
+      }
+
+      // 3 then we store the score property to localStorage by turn them into JSON      
+      // 1 localStorage only support String
+      // 2 if we need to store the object(score) we need to convert it in to sting by using JSON.stringify so localStorage now can store our score
+      //('name', value)
+      localStorage.setItem('score', JSON.stringify(score));
+
+
+      alert(`You picked ${playerMove} \nComputer picked ${compMove} \n${result} \nWins: ${score.wins}, Losses: ${score.losses}, Ties: ${score.ties}`);
+    }
+
+    function pickCompMove() {
+
+      const comp = Math.random();
+      let compMove = '';
+
+      if (comp >= 0 && comp < 1 / 3) {
+        compMove = 'Rock'
+      } else if (comp >= 1 / 3 && comp < 2 / 3) {
+        compMove = 'Paper'
+      } else {
+        compMove = 'Scissors'
+      }
+
+      console.log('Computer choose ' + compMove)
+
+      return compMove;
+      // it will not execute any after return to calling function
+      console.log('after');
+
+    };
+
+  </script>
+</body>
+
+</html>
