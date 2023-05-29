@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>DOM</title>
+</head>
+
+<body>
+  <div>
+    <h2>Enna Alouette</h2>
+    </h2>
+    <button onclick="subscribed()" class="sub-button">subscribe</button>
+  </div>
+  <div>
+    <h2>Rock Paper Scissors</h2>
+    <a href="06-DOM-Rock-Paper-Scissors.html">click here</a>
+  </div>
+
+  <div>
+    <h2>Amzon Shipping Calculator</h2>
+    <p>Order under 40$ + 10$ for shipping</p>
+    <p>Order upper 40$ + Free shipping</p>
+    <Input class="cost-input" placeholder="Cost of Order" type="number" />
+    <button onclick="calculateTotal()">Calculate</button>
+    <p class="shipping-cost">Total : </p>
+  </div>
+
+
+  <script>
+
+
+
+
+    function calculateTotal() {
+      const costElement = document.querySelector('.cost-input');
+      //here we get input value by useing .value
+      let costTotal = Number(costElement.value);
+
+      if (costTotal < 40) {
+        costTotal = costTotal + 10;
+        console.log(costTotal);
+
+      } else if (costTotal >= 40) {
+        console.log(costTotal);
+
+      }
+      document.querySelector('.shipping-cost').innerHTML = `Total : ${costTotal}$`;
+    }
+
+    function subscribed() {
+      const subButton = document.querySelector('.sub-button');
+
+      if (subButton.innerText === 'subscribe') {
+        subButton.innerHTML = 'subscribed';
+      } else {
+        subButton.innerHTML = 'subscribe';
+      }
+    }
+
+  </script>
+</body>
+
+</html>
