@@ -7,6 +7,9 @@
 
 <body>
   <div>
+    <h3 class="displayNum"></h3>
+  </div>
+  <div>
     <button onclick="updateCalculation('7')">7</button>
     <button onclick="updateCalculation('8')">8</button>
     <button onclick="updateCalculation('9')">9</button>
@@ -34,23 +37,27 @@
 
   //eval(calculation) convert the calculation string into the actual math
   let calculation = localStorage.getItem('calculation') || '';
+  document.querySelector('.displayNum').innerText = calculation;
 
   function updateCalculation(value) {
     calculation += value;
     console.log(calculation);
     localStorage.setItem('calculation', calculation);
+    document.querySelector('.displayNum').innerText = calculation;
   };
 
   function calculate() {
     eval(calculation);
     calculation = eval(calculation);
     console.log(calculation.toString());
+    document.querySelector('.displayNum').innerText = calculation.toString();
     localStorage.setItem('calculation', calculation);
 
   };
   function clearCalculation() {
     calculation = '';
     console.log(calculation);
+    document.querySelector('.displayNum').innerText = '';
     localStorage.setItem('calculation', calculation);
   };
 

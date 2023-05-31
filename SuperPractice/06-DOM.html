@@ -20,16 +20,30 @@
     <h2>Amzon Shipping Calculator</h2>
     <p>Order under 40$ + 10$ for shipping</p>
     <p>Order upper 40$ + Free shipping</p>
-    <Input class="cost-input" placeholder="Cost of Order" type="number" />
+    <Input class="cost-input" placeholder="Cost of Order" type="number" onkeydown="handleCostKeydown(event)" />
     <button onclick="calculateTotal()">Calculate</button>
     <p class="shipping-cost">Total : </p>
   </div>
 
 
   <script>
+    //convert a Vaule in to sting
+    String(25);
+    console.log('25' - 5);
+    console.log('25' + 5);
+    //window object represent a browser 
+    window.document
+    window.console.log('window');
+    window.alert('window');
 
 
+    function handleCostKeydown(event) {
+      console.log(event.key)
 
+      if (event.key === 'Enter') {
+        calculateTotal();
+      }
+    }
 
     function calculateTotal() {
       const costElement = document.querySelector('.cost-input');

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <Title>DOM-Practice</Title>
+</head>
+
+<body>
+  <div>
+    <h3>querySelector</h3>
+    <button class="button1">9a</button>
+    <button class="button2">9b</button>
+  </div>
+  <div>
+    <h3>Choose Coin</h3>
+    <button class="head" onclick="chooseHead()">Heads</button>
+    <button class="tail" onclick="chooseTail()">Tail</button>
+    <p class="coin">You choose: </p>
+  </div>
+  <div>
+    <h3>Get Value</h3>
+    <input type="text" placeholder="enter your name" onkeydown="enterName(event)">
+    <button class="submit" onclick="submit()">submit</button>
+    <p class="helloName"></p>
+  </div>
+  <div>
+    <h3>OnKeyup</h3>
+    <input class="onkey" type="text" placeholder="enter your name" onkeyup="printOnkey(event)">
+    <p class="onkeyParagraph"></p>
+  </div>
+  <div>
+    <h2>Amzon Shipping Calculator</h2>
+    <p>Order under 40$ + 10$ for shipping</p>
+    <p>Order upper 40$ + Free shipping</p>
+    <Input class="cost-input" placeholder="Cost of Order" type="number" onkeydown="handleCostKeydown(event)" />
+    <button onclick="calculateTotal()">Calculate</button>
+    <p class="shipping-cost">Total : </p>
+  </div>
+  <div class="row">
+    <h1>Cart Quantity</h1>
+    <button onclick="showCartQuantity()">Show Quantity</button>
+    <button onclick="updateCart(1)">Add to Cart</button>
+    <button onclick="updateCart(2)">+2</button>
+    <button onclick="updateCart(3)">+3</button>
+    <button onclick="updateCart(4)">+4</button>
+    <button onclick="updateCart(5)">+5</button>
+    <button onclick="updateCartRemove(1)">Remove from Cart</button>
+    <button onclick="updateCartRemove(2)">-2</button>
+    <button onclick="updateCartRemove(3)">-3</button>
+    <button onclick="resetCart()">Reset Cart</button>
+    <button onclick="fckBitch()">Enna</button>
+    <p class="inCart">Cart Quantity: 0</p>
+  </div>
+
+
+
+  <script>
+    const audio = new Audio("enna-sound.mp3");
+    function fckBitch() {
+      audio.play();
+      console.log('F*cking Bitch')
+    }
+
+    console.log(document.querySelector('button'));
+    document.querySelector('.button2').innerText = '9b Done!';
+
+    function chooseTail() {
+      document.querySelector('.coin').innerText = 'You choose: Tail';
+    };
+    function chooseHead() {
+      document.querySelector('.coin').innerText = 'You choose: Head';
+    };
+
+    function submit() {
+      const inputName = document.querySelector('input');
+      let name = inputName.value;
+      document.querySelector('.helloName').innerText = `Hello ${name}`;
+
+    };
+
+    function enterName(event) {
+      if (event.key === 'Enter') {
+        submit();
+      }
+
+    };
+    function printOnkey(event) {
+      const inputWord = document.querySelector('.onkey');
+      let word = inputWord.value;
+      document.querySelector('.onkeyParagraph').innerText = `${word}`;
+    };
+
+    function handleCostKeydown(event) {
+      console.log(event.key)
+
+      if (event.key === 'Enter') {
+        calculateTotal();
+      }
+    }
+
+    function calculateTotal() {
+      const costElement = document.querySelector('.cost-input');
+      //here we get input value by useing .value
+      let costTotal = Number(costElement.value) * 100;
+      if (costTotal < 4000) {
+        costTotal = costTotal + 1000;
+        console.log(costTotal);
+      }
+      document.querySelector('.shipping-cost').innerHTML = `Total : ${costTotal / 100}$`;
+    };
+
+
+    let cartQuantity = 0;
+
+    function showCartQuantity() {
+      console.log('Cart Quantity : ' + cartQuantity);
+    }
+
+    function resetCart() {
+      cartQuantity = 0;
+      console.log('Cart was reset !')
+      document.querySelector('.inCart').innerText = `Cart Quantity: ${cartQuantity}`;
+    }
+
+    function updateCart(amount) {
+
+      if ((cartQuantity + amount) > 10) {
+        console.log('The cart is full');
+        alert('The cart is full');
+        return;
+
+      } else {
+        cartQuantity = cartQuantity + amount;
+        console.log('Cart Quantity : ' + cartQuantity);
+
+      }
+      document.querySelector('.inCart').innerText = `Cart Quantity: ${cartQuantity}`;
+    };
+
+
+    function updateCartRemove(amount) {
+
+      if ((cartQuantity - amount) < 0) {
+        console.log('Not enough items in the cart')
+        alert('Not enough items in the cart')
+        return;
+
+      } else {
+        cartQuantity -= amount;
+        console.log('Cart Quantity : ' + cartQuantity);
+      }
+      document.querySelector('.inCart').innerText = `Cart Quantity: ${cartQuantity}`;
+
+    }
+
+
+
+  </script>
+</body>
+
+</html>
