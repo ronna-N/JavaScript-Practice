@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>07-practice</title>
+  <link rel="stylesheet" href="/SuperPractice/styles/07-Pratice.css">
+
+</head>
+
+<body>
+  <!--
+    // 01
+  <button class="add-to-cart-button">Add to Cart</button>
+  <div>
+    <button class="request-button">Request Now</button>
+    <button class="schedule-button">Schedule Later</button>
+  </div>
+  //02
+  <button class="js-button">Test</button>
+-->
+  <button class="toggle-button js-button " onclick="toggleButton('.js-button')">Gaming</button>
+  <button class="toggle-button js-button1 " onclick="toggleButton('.js-button1')">Music</button>
+  <button class="toggle-button js-button2 " onclick="toggleButton('.js-button2')">Tech</button>
+
+  <div>
+    <h2>Amzon Shipping Calculator</h2>
+    <p>Order under 40$ + 10$ for shipping</p>
+    <p>Order upper 40$ + Free shipping</p>
+    <Input class="js-cost-input cost-input" placeholder="Cost of Order" type="int"
+      onkeydown="handleCostKeydown(event)" />
+    <button onclick="calculateTotal()" class="calculate-button">Calculate</button>
+    <p class="js-cost">Total : </p>
+  </div>
+
+  <div class="cal-container">
+    <div>
+      <h3 class="displayNum"></h3>
+    </div>
+    <div>
+      <button onclick="updateCalculation('7')" class="numpad">7</button>
+      <button onclick="updateCalculation('8')" class="numpad">8</button>
+      <button onclick="updateCalculation('9')" class="numpad">9</button>
+      <button onclick="updateCalculation('+')" class="pad">+</button>
+    </div>
+    <div>
+      <button onclick="updateCalculation('4')" class="numpad">4</button>
+      <button onclick="updateCalculation('5')" class="numpad">5</button>
+      <button onclick="updateCalculation('6')" class="numpad">6</button>
+      <button onclick="updateCalculation('-')" class="pad">-</button>
+    </div>
+    <div>
+      <button onclick="updateCalculation('1')" class="numpad">1</button>
+      <button onclick="updateCalculation('2')" class="numpad">2</button>
+      <button onclick="updateCalculation('3')" class="numpad">3</button>
+      <button onclick="updateCalculation('*')" class="pad">*</button>
+    </div>
+    <div>
+      <button onclick="updateCalculation('0')" class="numpad">0</button>
+      <button onclick="updateCalculation('.')" class="numpad">.</button>
+      <button onclick="calculate()" class="numpad">=</button>
+      <button onclick="updateCalculation('/')" class="pad">/</button>
+    </div>
+    <button onclick="clearCalculation()" class="clear-button">Clear</button>
+  </div>
+
+
+</body>
+
+
+<script src="/SuperPractice/scripts/07-Practice.js">
+</script>
+</body>
+
+</html>
