@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Calculation</title>
+</head>
+
+<body>
+  <div>
+    <h3 class="displayNum"></h3>
+  </div>
+  <div>
+    <button onclick="updateCalculation('7')">7</button>
+    <button onclick="updateCalculation('8')">8</button>
+    <button onclick="updateCalculation('9')">9</button>
+  </div>
+  <div>
+    <button onclick="updateCalculation('4')">4</button>
+    <button onclick="updateCalculation('5')">5</button>
+    <button onclick="updateCalculation('6')">6</button>
+  </div>
+  <div>
+    <button onclick="updateCalculation('1')">1</button>
+    <button onclick="updateCalculation('2')">2</button>
+    <button onclick="updateCalculation('3')">3</button>
+  </div>
+  <div>
+    <button onclick="updateCalculation('+')">+</button>
+    <button onclick="updateCalculation('-')">-</button>
+    <button onclick="calculate()">=</button>
+  </div>
+  <button onclick="clearCalculation()">Clear</button>
+  <button onclick="console.log(calculation);">Show</button>
+
+</body>
+<script>
+
+  //eval(calculation) convert the calculation string into the actual math
+  let calculation = localStorage.getItem('calculation') || '';
+  document.querySelector('.displayNum').innerText = calculation;
+
+  function updateCalculation(value) {
+    calculation += value;
+    console.log(calculation);
+    localStorage.setItem('calculation', calculation);
+    document.querySelector('.displayNum').innerText = calculation;
+  };
+
+  function calculate() {
+    eval(calculation);
+    calculation = eval(calculation);
+    console.log(calculation.toString());
+    document.querySelector('.displayNum').innerText = calculation.toString();
+    localStorage.setItem('calculation', calculation);
+
+  };
+  function clearCalculation() {
+    calculation = '';
+    console.log(calculation);
+    document.querySelector('.displayNum').innerText = '';
+    localStorage.setItem('calculation', calculation);
+  };
+
+
+
+
+</script>
+
+</html>

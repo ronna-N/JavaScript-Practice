@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Rock Paper Scissors DOM</title>
+  <link rel="stylesheet" href="\styles\06-DOM-Rock-Paper-Scissors.css">
+</head>
+
+<body>
+  <h3 class="title">Rock Paper Scissors</h3>
+  <button onclick="
+      playGame('rock');
+  " class="move-button"><img src="/SuperPractice/asset/rock-emoji.png" class="move-icon"></button>
+
+  <button onclick="
+      playGame('paper');
+  " class="move-button"><img src="/SuperPractice/asset/paper-emoji.png" class="move-icon"></button>
+
+  <button onclick="
+      playGame('scissors');
+  " class="move-button"><img src="/SuperPractice/asset/scissors-emoji.png" class="move-icon"></button>
+
+  <div>
+    <p class="js-result result">You Win</p>
+    <p class="js-move move">Your Rock - Paper Computer</p>
+    <p class="js-score score">Wins: 0, Losses: 0, Ties: 0</p>
+  </div>
+  <div>
+    <button onclick="resetScore()" class="reset-button">Reset Score</button>
+    <button onclick="fckBitch()" class="enna-button">Enna
+    </button>
+  </div>
+
+
+
+
+  <script src="\scripts\06-DOM-Rock-Paper-Scissors.js" />
+</body>
+
+</html>

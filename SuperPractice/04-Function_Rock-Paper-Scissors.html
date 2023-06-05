@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Rock Paper Scissors</title>
+</head>
+
+<body>
+  <h3>Rock Paper Scissors</h3>
+  <button onclick="
+      playGame('Rock');
+  ">Rock</button>
+
+  <button onclick="
+      playGame('Paper');
+  ">Paper</button>
+
+  <button onclick="
+      playGame('Scissors');
+  ">Scissors</button>
+
+
+  <script>
+    //this Gobal Variable bc its can use anywhere
+
+
+
+    function playGame(playerMove) {
+
+      const compMove = pickCompMove();
+      let result = '';
+
+      if (playerMove === 'Scissors') {
+        
+        if (compMove === 'Rock') {
+          result = 'You lose.';
+          console.log('You lose.')
+
+        } else if (compMove === 'Paper') {
+          result = 'You win.';
+          console.log('You win.')
+
+        } else {
+          result = 'Tie.';
+          console.log('Tie.')
+        }
+
+      } else if (playerMove === 'Paper') {
+        if (compMove === 'Rock') {
+          result = 'You win.';
+          console.log('You win.')
+        } else if (compMove === 'Paper') {
+          result = 'Tie.';
+          console.log('Tie.')
+        } else {
+          result = 'You lose.';
+          console.log('You lose.')
+        }
+      } else if (playerMove === 'Rocks') {
+        if (compMove === 'Rock') {
+          result = 'Tie.';
+          console.log('Tie.')
+        } else if (compMove === 'Paper') {
+          result = 'You lose.';
+          console.log('You lose.')
+        } else {
+          result = 'You win.';
+          console.log('You win.')
+        }
+      }
+
+      alert(`You picked ${playerMove} \nComputer picked ${compMove} \n${result}`);
+    }
+
+    function pickCompMove() {
+
+      const comp = Math.random();
+      let compMove = '';
+
+      if (comp >= 0 && comp < 1 / 3) {
+        compMove = 'Rock'
+      } else if (comp >= 1 / 3 && comp < 2 / 3) {
+        compMove = 'Paper'
+      } else {
+        compMove = 'Scissors'
+      }
+
+      console.log('Computer choose ' + compMove)
+
+      return compMove;
+      // it will not execute any after return to calling function
+      console.log('after');
+
+    };
+
+  </script>
+</body>
+
+</html>

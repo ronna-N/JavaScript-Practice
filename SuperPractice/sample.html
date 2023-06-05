@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Sample</title>
+</head>
+
+<body>
+  <button onclick="checkInventory()">check</button>
+  <button onclick="increase1()">+1</button>
+  <button onclick="decrease1()">-1</button>
+  <button onclick="resetInventory()">reset</button>
+  <button onclick="fckBitch()">Enna</button>
+  <button onclick="getRandomInt(5)"> random number</button>
+
+  <script>
+
+    
+
+    let frogs = 0;
+
+
+    const audio = new Audio("enna-sound.mp3");
+
+    function fckBitch() {
+      audio.play();
+      console.log('F*cking Bitch')
+    }
+
+    function increase1() {
+
+      if (frogs >= 10) {
+        console.log(frogs);
+        console.log('This pound have to many frogs')
+      } else {
+        frogs += 1
+        console.log(frogs);
+      }
+    }
+
+    function decrease1() {
+      if (frogs <= 0) {
+        console.log(frogs);
+        console.log('This pound have to many frogs')
+      } else {
+        frogs -= 1
+        console.log(frogs);
+      }
+    }
+
+    function resetInventory() {
+      frogs = 0
+      console.log('Pound has been reset');
+
+    }
+    function checkInventory() {
+      console.log('You have ' + frogs + ' frogs in the Pound');
+    }
+
+    function getRandomInt(max) {
+      console.log(Math.floor(Math.random() * max));
+    }
+
+
+  </script>
+</body>
+
+</html>

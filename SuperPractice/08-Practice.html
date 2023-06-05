@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Array and Loops Practice</title>
+</head>
+
+<body>
+
+  <script>
+    /*
+        const array11o = ['hello', 'valid', 'word', 'search', 'good', 'search'];
+    
+        const array11p = ['not', 'found', 'valid', 'word', 'in', 'array'];
+    
+        function o11(array) {
+          let index = -1;
+          for (let i = 0; i < array.length; i++) {
+            const word = array[i];
+            if (word === 'search') {
+              index = i;
+              break;
+            }
+          }
+          console.log(index);
+        };
+        o11(array11o);
+        o11(array11p);
+    
+        const array11q = ['red', 'blue', 'yellow', 'green', 'yellow'];
+    
+        const array11q2 = ['red', 'yellow', 'blue'];
+    
+        function q11(array, target) {
+          let index = -1;
+          for (let i = 0; i < array.length; i++) {
+            const word = array[i];
+            if (word === target) {
+              index = i;
+              break;
+            }
+          }
+          console.log(index);
+        };
+    
+        q11(array11q, 'yellow');
+        q11(array11q2, 'green');
+    
+        const array11r = ['egg', 'apple', 'egg', 'egg', 'ham'];
+    
+        function r11(array, target) {
+    
+          const result = [];
+          let count = 0;
+    
+          for (let i = 0; i < array.length; i++) {
+            //console.log(array[i])
+            if (array[i] === target && count < 2) {
+              count++
+              continue;
+            }
+    
+            result.push(array[i]);
+          }
+          return console.log(result);
+    
+        };
+    
+        r11(array11r, 'egg');
+    
+        function s11(array, target) {
+          const result = [];
+    
+          let count = 0;
+          array.reverse();
+    
+          for (let i = 0; i < array.length; i++) {
+            //console.log(array[i])
+            if (array[i] === target && count < 2) {
+              count++
+              continue;
+            }
+            result.push(array[i]);
+          }
+          const reverseArray = result.reverse().slice()
+          return console.log(reverseArray);
+        };
+    
+        s11(array11r, 'egg');
+    
+    function v11() {
+      for (let i = 1; i <= 20; i++) {
+
+        if (i % 3 === 0 && i % 5 === 0) {
+          console.log('FizzBuzz');
+        } else if (i % 3 === 0) {
+          console.log('Fizz');
+        } else if (i % 5 === 0) {
+          console.log('Buzz');
+        } else {
+          console.log(i);
+        }
+      }
+    }
+    v11();
+    */
+
+    const array11w = ['red', 'blue', 'yellow', 'green', 'yellow'];
+    const array11w2 = ['red', 'yellow', 'blue'];
+
+    function findIndex(array, word) {
+      for (let i = 0; i < array.length; i++) {
+        if (array[i] === word) {
+          console.log(word);
+          console.log(i);
+          return i;
+        }
+      }
+      return -1;
+    }
+
+    function unique(array) {
+      const result = [];
+
+      for (let i = 0; i < array.length; i++) {
+        const word = array[i];
+        if (findIndex(result, word) === -1) {
+          result.push(word);
+        }
+      }
+
+      return result;
+    }
+    console.log(unique(array11w));
+
+  </script>
+</body>
+
+</html>

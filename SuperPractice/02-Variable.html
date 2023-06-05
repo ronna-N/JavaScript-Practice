@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Variable</title>
+</head>
+
+<body>
+  <h1>Cart Quantity</h1>
+  <div class="row">
+    <button onclick="showCartQuantity()">Show Quantity</button>
+    <button onclick="updateCart(1)">Add to Cart</button>
+    <button onclick="updateCart(2)">+2</button>
+    <button onclick="updateCart(3)">+3</button>
+    <button onclick="updateCart(4)">+4</button>
+    <button onclick="updateCart(5)">+5</button>
+    <button onclick="updateCartRemove(1)">Remove from Cart</button>
+    <button onclick="updateCartRemove(2)">-2</button>
+    <button onclick="updateCartRemove(3)">-3</button>
+    <button onclick="resetCart()">Reset Cart</button>
+    <button onclick="fckBitch()">Enna</button>
+
+  </div>
+  <script>
+    
+    let cartQuantity = 0;
+
+    function showCartQuantity () {
+      console.log('Cart Quantity : '+ cartQuantity);
+    }
+
+    function resetCart () {
+      cartQuantity = 0;
+      console.log('Cart was reset !')
+    }
+
+    function updateCart(amount) {
+
+      if ((cartQuantity + amount) > 10) {
+        console.log('The cart is full');
+        alert('The cart is full');
+        return;
+
+      } else {
+        cartQuantity = cartQuantity + amount;
+        console.log('Cart Quantity : ' + cartQuantity);
+
+      }
+    };
+
+
+    function updateCartRemove(amount) {
+
+      if ((cartQuantity - amount) <= 0) {
+        console.log('Not enough items in the cart')
+        alert('Not enough items in the cart')
+        return;
+
+      } else {
+        cartQuantity -= amount;
+        console.log('Cart Quantity : ' + cartQuantity);
+      }
+
+    }
+
+    const audio = new Audio("enna-sound.mp3");
+    function fckBitch() {
+      audio.play();
+      console.log('F*cking Bitch')
+    }
+
+
+
+
+
+
+    /*
+    let == create Variable then give a name to the variable ex.variable1, calculation, result, message
+    You can't use speacial words to names the variable ex.let but youcan use leta let1 let2
+    You can't start variable name with a number 
+    You can't use specail character in variable name except $ and _
+    
+
+    let variable1 = 3;
+    console.log(variable1);
+
+    let calculation = variable1 + 2;
+    console.log(calculation);
+
+    //3+3
+    console.log(variable1 + 3);
+
+    //5+3
+    const result = calculation + variable1;
+    console.log(result);
+
+    //change the value of the variable or reassigning
+    variable1 = 5;
+    console.log(variable1);
+
+    variable1 = variable1 + 1;
+    console.log(variable1)
+
+    /* can't change the value from varivable created by const (constant)
+    this variable will always contain the same value
+    
+    typeof = use to check the type of variable
+
+
+    const message = 'Hello';
+    console.log(message);
+    console.log(typeof message);
+
+    const variable2 = 3;
+    console.log(variable2)
+    console.log(typeof variable2)
+*/
+
+
+  </script>
+</body>
+
+</html>
