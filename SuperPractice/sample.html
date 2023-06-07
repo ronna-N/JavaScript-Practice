@@ -2,67 +2,50 @@
 <html>
 
 <head>
-  <title>Sample</title>
+  <title>Bracket Counter</title>
 </head>
 
 <body>
-  <button onclick="checkInventory()">check</button>
-  <button onclick="increase1()">+1</button>
-  <button onclick="decrease1()">-1</button>
-  <button onclick="resetInventory()">reset</button>
-  <button onclick="fckBitch()">Enna</button>
-  <button onclick="getRandomInt(5)"> random number</button>
 
+  <input id="input" placeholder="Input here...." />
+  <button onclick="processInput()">Process</button>
+  <span id="result"></span>
+  
   <script>
 
-    
+    function processInput() {
+      const inputElement = document.getElementById('input');
+      const input = inputElement.value;
 
-    let frogs = 0;
+      let missingOpenBrackets = [];
+      let missingCloseBrackets = [];
+      let openBrackets = 0;
+      let closeBrackets = 0;
 
 
-    const audio = new Audio("enna-sound.mp3");
-
-    function fckBitch() {
-      audio.play();
-      console.log('F*cking Bitch')
-    }
-
-    function increase1() {
-
-      if (frogs >= 10) {
-        console.log(frogs);
-        console.log('This pound have to many frogs')
-      } else {
-        frogs += 1
-        console.log(frogs);
+      for (let i = 0; i < input.length; i++) {
+        if (input[i] === '(') {
+          let addClose = input[i + 1];
+          if (input.length[i + 1] != ')') {
+            addClose = ')';
+            missingCloseBrackets.push(i + 1);
+          }
+        } else if (input[i] === ')') {
+          let addOpen = input[i - 1];
+          if (input.length[i - 1] != '(') {
+            addClose = '(';
+            missingOpenBrackets.push(i - 1);
+          }
+        }
       }
-    }
+      const output = document.getElementById('result').innerHTML = `\n<p>Missing ${missingOpenBrackets.length} open bracket(s) at position(s): ${missingOpenBrackets}</p>\n<p>Missing ${missingCloseBrackets.length} close bracket(s) at position(s): ${missingCloseBrackets}</p>`;
 
-    function decrease1() {
-      if (frogs <= 0) {
-        console.log(frogs);
-        console.log('This pound have to many frogs')
-      } else {
-        frogs -= 1
-        console.log(frogs);
-      }
-    }
-
-    function resetInventory() {
-      frogs = 0
-      console.log('Pound has been reset');
-
-    }
-    function checkInventory() {
-      console.log('You have ' + frogs + ' frogs in the Pound');
-    }
-
-    function getRandomInt(max) {
-      console.log(Math.floor(Math.random() * max));
+      console.log(output);
     }
 
 
   </script>
 </body>
+
 
 </html>

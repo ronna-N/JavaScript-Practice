@@ -3,37 +3,27 @@
 
 <head>
     <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="SuperBasic.css">
+    <link rel="stylesheet" href="styles/01-SuperBasic.css">
     <title>Super-Basic Practice</title>
 </head>
 
 <body>
-    <div class="row">
-        <div class="ennaContainer">
-            <button title="Good-Button" class="Enna-Button" onclick="audio.play()">I'm a button</button>
-        </div>
-        <div class="reimuContainer">
-            <p>
-                This
-                <button class="Reimu-Button" onclick="alert('ba boooo')">Button ! </button>
-                paragraph
-            </p>
-        </div>
+    <div class="ennaContainer">
+        <button title="Good-Button" class="Enna-Button" onclick="callEnna()">I am a button</button>
     </div>
-
-
     <div class="pomuContainer">
-        <p for="POMU">How many PP energy: </p>
-        <input type="int" id="POMU" placeholder=" input some pomu !" maxlength="2">
-        <button onclick="printPomu()">OK</button>
-
+        <p>Insert Your PP energy</p>
+        <input placeholder="PP energy here" maxlength="2" class="js-pomu pomupuff" onkeydown="enterEnergy(event)" />
+        <button class="enterPP">Ok</button>
     </div>
-    <div class="ppEnergy" id="output"></div>
+    <div class="print-pomu"></div>
 
 
 
 
-    <script src="SuperBasic.js"></script>
+
+
+    <script src="scripts/01-SuperBasic.js"></script>
 </body>
 
 </html>

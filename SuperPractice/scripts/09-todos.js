@@ -14,29 +14,48 @@ function renderTodoList() {
 
   let todoArrayHTML = '';
 
-  for (let i = 0; i < todoArray.length; i++) {
+  todoArray.forEach(function (todoObject, index) {
 
-    const todoObject = todoArray[i];
-
-    //deconstruction method for object by taking out the property out of the object and put its in the variable calls name
-    const { name } = todoObject;
-    //const name = todoObject.name;
-    const { dueDate } = todoObject;
-    //const dueDate = todoObject.dueDate;
-
-    console.log(i, todoObject)
+    const { name, dueDate } = todoObject;
+    console.log(index, todoObject)
 
     const html =
       `
       <div>${name}</div>
       <div >${dueDate}</div>
       <button class="deleteButton" onClick="
-      todoArray.splice(${i}, 1);
+      todoArray.splice(${index}, 1);
       renderTodoList();">Delete</button>
 
     ` //here use to generate html code by loops
     todoArrayHTML += html;
-  }
+
+  })
+
+  /*
+    for (let i = 0; i < todoArray.length; i++) {
+  
+      const todoObject = todoArray[i];
+      //deconstruction method for object by taking out the property out of the object and put its in the variable calls name
+      const { name } = todoObject;
+      //const name = todoObject.name;
+      const { dueDate } = todoObject;
+      //const dueDate = todoObject.dueDate;
+  
+      console.log(i, todoObject)
+  
+      const html =
+        `
+        <div>${name}</div>
+        <div >${dueDate}</div>
+        <button class="deleteButton" onClick="
+        todoArray.splice(${i}, 1);
+        renderTodoList();">Delete</button>
+  
+      ` //here use to generate html code by loops
+      todoArrayHTML += html;
+    }
+  */
   document.querySelector('.js-addTodoList').innerHTML = todoArrayHTML;
 }
 

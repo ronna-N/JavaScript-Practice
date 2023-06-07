@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>09 Advanced Functions</title>
+</head>
+
+<body>
+  <div>
+    <button onclick="finish()">start</button>
+
+    <button onclick="afterClick()" class="js-addCart">Add to cart</button>
+    <button onclick="add()" class="js-add">Add</button>
+    <button onclick="remove()" class="js-remove">Remove</button>
+  </div>
+  <span class="afterFunction"></span>
+
+
+  <script>
+
+    const titleText = document.querySelector('title');
+    let change;
+    let countMassage = 2;
+
+    changeTitle();
+    function add() {
+      countMassage++
+      if (countMassage > 0) {
+        changeTitle();
+      }
+      console.log(countMassage);
+    }
+
+    function remove() {
+      countMassage--;
+      console.log(countMassage);
+      if (countMassage === 0) {
+        clearInterval(changeTitle());
+        titleText.innerHTML = 'App';
+      }
+      if (countMassage <= 0) {
+        countMassage = 1;
+      }
+    }
+
+    function changeTitle() {
+      setInterval(function () {
+        if (titleText.innerHTML != 'App') {
+          titleText.innerHTML = 'App';
+        } else if ('App') {
+          titleText.innerHTML = `(${countMassage})New messages`
+        }
+      }, 3000);
+    };
+
+    /*
+        const removeAfter = document.querySelector('.js-addCart');
+        const spanText = document.querySelector('.afterFunction');
+        let timeoutId;
+    
+        function afterClick() {
+          spanText.innerText = `'Add' below the button`;
+    
+          clearTimeout(timeoutId);
+    
+          timeoutId = setTimeout(function () {
+            spanText.innerText = '';
+            console.log('removed')
+          }, 2000)
+        }
+    
+    
+        const changeText = document.querySelector('button')
+        let isAutoPlaying = false;
+    
+        function finish() {
+          changeText.innerText = 'Loading...';
+          setTimeout(function () {
+            if (!isAutoPlaying) {
+              changeText.innerText = 'finished';
+              isAutoPlaying = true;
+            } else {
+              changeText.innerText = 'start';
+              isAutoPlaying = false;
+            }
+          }, 2000)
+        }
+    
+    */
+    /*
+        greeting();
+        function greeting() {
+          console.log('hello')
+        };
+    
+        const num = 2;
+        //funtion are also a value can store to another variable
+        const function1 = function greeting() {
+          console.log('hello2')
+        };
+    
+        console.log(function1);
+        console.log(typeof function1);
+        function1();
+    
+        const object1 = {
+          num: 2,
+          fun: function greeting() {
+            console.log('hello3');
+          }
+        };
+    
+        object1.fun();
+    
+        function display(param) {
+          console.log(param);
+        };
+        display(2);
+    
+        function run(param) {
+          param();
+        }
+        //call back function
+        run(function () {
+          console.log('hello4');
+        });
+    */
+    /*
+        //setTimeout to set time to run a code in a future by set functoin, time/ms 3000 = 3s
+        //as
+        setTimeout(function () {
+          console.log('timeout1');
+          console.log('timeout2');
+        }, 3000);
+        //asynchronous code mkae the computer wait for one line to finish before going to the next line
+        console.log('next line');
+        
+        // setInterval to set time to run a code like setTimeout but setInterval will keep running a function evry time set, run console.log every 3 sec (3000ms)
+        setInterval(function () {
+          console.log('interval')
+        }, 3000);
+    */
+    /*
+        //loop though and array .forEach()
+        [
+          'make dinner',
+          'wash dishes',
+          'watch youtube',
+        ].forEach(function (value, index) { //value = values in the array and index is a postion of the values
+    
+          if (value === 'wash dishes') {
+            // this is do like a continue in for loop
+            // but if you want to you break it better to use a normal for loop
+            return;
+    
+          }
+          console.log(index, value);
+    
+        });
+    */
+    /*
+        const add =
+          function () {
+            console.log(2 + 3)
+          }
+    
+        add(add());
+    
+        function runTwice(fun) {
+          fun();
+          fun();
+        }
+    
+        runTwice(function () {
+          console.log('12b')
+        });
+    
+        runTwice(add);
+    */
+
+
+
+
+  </script>
+</body>
+
+</html>

@@ -51,7 +51,7 @@ function calculateTotal() {
     costTotal = costTotal + 10;
     console.log(costTotal);
   }
-  cost.classList.remove('cost-deny')
+  cost.classList.remove('cost-deny');
   document.querySelector('.js-cost').innerHTML = `Total : ${costTotal}$`;
 };
 

@@ -4,6 +4,7 @@ body {
     flex-direction: column;
     background-color: #FFFAEF;
     gap: 1rem;
+    align-items: center;
 
 }
 
@@ -42,20 +43,7 @@ body {
     border-radius: 3px;
 }
 
-.reimuContainer {
-    margin: 0px;
-    padding-left: 15px;
-    position: relative;
-    width: 173px;
-    height: 40px;
-    background: #ED84C3;
-    border: 1px solid #262222;
-    border-radius: 5px;
-}
-
-
 .pomuContainer {
-    margin: 0;
     padding-left: 15px;
     position: relative;
     width: 300px;
@@ -63,4 +51,15 @@ body {
     background: #B7E1A1;
     border: 1px solid #262222;
     border-radius: 5px;
+    align-items: center;
+}
+
+.print-pomu {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.viewGrid {
+    /*border: 1px solid;*/
 }

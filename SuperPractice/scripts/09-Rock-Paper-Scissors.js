@@ -31,6 +31,21 @@ function resetScore() {
 //    function showScore() {
 //      alert(`Now Score is Wins: ${score.wins}, Lossse: ${score.losses}, Ties: ${score.ties}`);
 //    };
+let isAutoPlaying = false;
+let intervalID;
+
+function autoPlay() {
+  if (!isAutoPlaying) {
+    intervalID = setInterval(function () {
+      const playerMove = pickCompMove();
+      playGame(playerMove)
+    }, 2000);
+    isAutoPlaying = true;
+  } else {
+    clearInterval(intervalID);
+    isAutoPlaying = false;
+  }
+}
 
 
 function playGame(playerMove) {
