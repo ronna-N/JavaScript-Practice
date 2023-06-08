@@ -14,7 +14,7 @@ function renderTodoList() {
 
   let todoArrayHTML = '';
 
-  todoArray.forEach(function (todoObject, index) {
+  todoArray.forEach((todoObject, index) => {
 
     const { name, dueDate } = todoObject;
     console.log(index, todoObject)
@@ -23,40 +23,21 @@ function renderTodoList() {
       `
       <div>${name}</div>
       <div >${dueDate}</div>
-      <button class="deleteButton" onClick="
-      todoArray.splice(${index}, 1);
-      renderTodoList();">Delete</button>
+      <button class="deleteButton js-delete-todo">Delete</button>
 
     ` //here use to generate html code by loops
     todoArrayHTML += html;
 
-  })
-
-  /*
-    for (let i = 0; i < todoArray.length; i++) {
-  
-      const todoObject = todoArray[i];
-      //deconstruction method for object by taking out the property out of the object and put its in the variable calls name
-      const { name } = todoObject;
-      //const name = todoObject.name;
-      const { dueDate } = todoObject;
-      //const dueDate = todoObject.dueDate;
-  
-      console.log(i, todoObject)
-  
-      const html =
-        `
-        <div>${name}</div>
-        <div >${dueDate}</div>
-        <button class="deleteButton" onClick="
-        todoArray.splice(${i}, 1);
-        renderTodoList();">Delete</button>
-  
-      ` //here use to generate html code by loops
-      todoArrayHTML += html;
-    }
-  */
+  });
   document.querySelector('.js-addTodoList').innerHTML = todoArrayHTML;
+  //we create delete Event here bc the line above is where the todo list HTML generate so we also create class .js-delete-todo here then we do addEventListener here
+  //we use forEach to loop all of the .js-delete-todo that select by document.querySelectorAll
+  document.querySelectorAll('.js-delete-todo').forEach((deleteButton, index) => {
+    deleteButton.addEventListener('click', () => {
+      todoArray.splice(index, 1);
+      renderTodoList();
+    })
+  })
 }
 
 function Enter(event) {
@@ -65,6 +46,9 @@ function Enter(event) {
     addTodos();
   }
 }
+
+document.querySelector('.js-add-todo-button').addEventListener('click', () => { addTodos(); })
+
 
 function addTodos() {
   const todosElement = document.querySelector('.js-input');

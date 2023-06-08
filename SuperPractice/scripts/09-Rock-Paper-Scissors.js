@@ -1,9 +1,11 @@
 const resultElement = document.querySelector('.js-result');
 const moveElement = document.querySelector('.js-move');
 const scoreElement = document.querySelector('.js-score');
+const rockElement = document.querySelector('.js-rock');
+const paperElement = document.querySelector('.js-paper');
+const scissorsElement = document.querySelector('.js-scissors');
 
 //console.log(document.querySelector('.score'))
-
 
 const audio = new Audio("enna-sound.mp3");
 function fckBitch() {
@@ -34,9 +36,15 @@ function resetScore() {
 let isAutoPlaying = false;
 let intervalID;
 
+/*
+const autoPlay = () => {
+
+};
+*/
+
 function autoPlay() {
   if (!isAutoPlaying) {
-    intervalID = setInterval(function () {
+    intervalID = setInterval(() => {
       const playerMove = pickCompMove();
       playGame(playerMove)
     }, 2000);
@@ -47,6 +55,26 @@ function autoPlay() {
   }
 }
 
+//we cann't call function after addEventListener bc give us a return value which is undefine so we need to create a function here and call function that we need to use in the function
+rockElement.addEventListener('click', () => {
+  playGame('rock');
+});
+paperElement.addEventListener('click', () => {
+  playGame('paper');
+});
+scissorsElement.addEventListener('click', () => {
+  playGame('scissors');
+});
+
+document.body.addEventListener('keydown', (event) => {
+  if (event.key === 'r') {
+    playGame('rock');
+  } else if (event.key === 'p') {
+    playGame('paper');
+  } else if (event.key === 's') {
+    playGame('scissors');
+  }
+})
 
 function playGame(playerMove) {
 
