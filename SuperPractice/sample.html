@@ -7,15 +7,17 @@
 
 <body>
 
-  <input id="input" placeholder="Input here...." />
+  <input id="input" placeholder="Input here...."/>
   <button onclick="processInput()">Process</button>
   <span id="result"></span>
-  
+
   <script>
 
     function processInput() {
       const inputElement = document.getElementById('input');
       const input = inputElement.value;
+
+      console.log(input);
 
       let missingOpenBrackets = [];
       let missingCloseBrackets = [];
@@ -24,24 +26,52 @@
 
 
       for (let i = 0; i < input.length; i++) {
-        if (input[i] === '(') {
+
+        if (input[i] === "(" && input[i + 1] === ")" || input[i] === ")" && input[i - 1] === "(") {
+
+          console.log("complete")
+
+        } else if (input[i] === "(" && input[i + 1] != ")") {
+          console.log("missing close bracket");
+
           let addClose = input[i + 1];
-          if (input.length[i + 1] != ')') {
-            addClose = ')';
-            missingCloseBrackets.push(i + 1);
-          }
-        } else if (input[i] === ')') {
+          missingCloseBrackets.push(i + 1);
+
+        } else if (input[i] === ")" && input[i - 1] != "(") {
+          console.log("missing open bracket");
+
           let addOpen = input[i - 1];
-          if (input.length[i - 1] != '(') {
-            addClose = '(';
-            missingOpenBrackets.push(i - 1);
-          }
+          missingOpenBrackets.push(i - 1);
         }
+
+        // if (input[i] === '(') {
+        //   let addClose = input[i + 1];
+
+        //   if (input.length[i + 1] != ')') {
+        //     addClose = ')';
+        //     missingCloseBrackets.push(i + 1);
+        //   }
+
+        // } else if (input[i] === ')') {
+
+        //   let addOpen = input[i - 1];
+
+        //   if (input.length[i - 1] != '(') {
+
+        //     addClose = '(';
+        //     missingOpenBrackets.push(i - 1);
+        //   }
+        // }
       }
-      const output = document.getElementById('result').innerHTML = `\n<p>Missing ${missingOpenBrackets.length} open bracket(s) at position(s): ${missingOpenBrackets}</p>\n<p>Missing ${missingCloseBrackets.length} close bracket(s) at position(s): ${missingCloseBrackets}</p>`;
+      const output = document.getElementById('result').innerHTML =
+        `\n<p>Missing ${missingOpenBrackets.length} open bracket(s) at position(s): ${missingOpenBrackets}</p>
+      \n<p>Missing ${missingCloseBrackets.length} close bracket(s) at position(s): ${missingCloseBrackets}</p>`;
 
       console.log(output);
-    }
+    };
+
+
+
 
 
   </script>

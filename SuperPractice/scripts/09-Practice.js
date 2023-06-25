@@ -4,19 +4,17 @@ const scoreElement = document.querySelector('.js-score');
 const rockElement = document.querySelector('.js-rock');
 const paperElement = document.querySelector('.js-paper');
 const scissorsElement = document.querySelector('.js-scissors');
+const resetScoreElement = document.querySelector('.reset-button');
+const autoPlayElement = document.querySelector('.js-auto-button');
+const confirmationElement = document.querySelector('.confirmation');
 
-//console.log(document.querySelector('.score'))
-
-const audio = new Audio("enna-sound.mp3");
-function fckBitch() {
-  audio.play();
-  console.log('F*cking Bitch')
-}
 let score = JSON.parse(localStorage.getItem('score')) || {
   wins: 0,
   losses: 0,
   ties: 0
-}
+};
+
+scoreElement.innerText = `Wins: ${score.wins}, Losses: ${score.losses}, Ties: ${score.ties}`;
 
 function resetScore() {
   score.wins = 0;
@@ -24,13 +22,25 @@ function resetScore() {
   score.ties = 0;
   localStorage.removeItem('score');
   scoreElement.innerText = `Wins: ${score.wins}, Losses: ${score.losses}, Ties: ${score.ties}`;
+  confirmationElement.innerHTML = '';
 };
 
+function resetConfirmation() {
+  confirmationElement.innerHTML = `
+  <span>Are you sure to reset the score</span>
+  <button class="js-yes">Yes</Button>
+  <button class="js-no">No</Button>
+  `;
+
+  document.querySelector('.js-yes').addEventListener('click', (event) => {
+    resetScore();
+  })
+  document.querySelector('.js-no').addEventListener('click', () => {
+    confirmationElement.innerHTML = '';
+  })
+}
 
 
-//    function showScore() {
-//      alert(`Now Score is Wins: ${score.wins}, Lossse: ${score.losses}, Ties: ${score.ties}`);
-//    };
 let isAutoPlaying = false;
 let intervalID;
 
@@ -40,31 +50,47 @@ function autoPlay() {
       const playerMove = pickCompMove();
       playGame(playerMove)
     }, 2000);
+    autoPlayElement.innerText = 'Stop Playin';
     isAutoPlaying = true;
   } else {
     clearInterval(intervalID);
+    autoPlayElement.innerText = 'Auto Play';
     isAutoPlaying = false;
   }
 }
 
-//we cann't call function after addEventListener bc give us a return value which is undefine so we need to create a function here and call function that we need to use in the function
 rockElement.addEventListener('click', () => {
   playGame('rock');
 });
+
 paperElement.addEventListener('click', () => {
   playGame('paper');
 });
+
 scissorsElement.addEventListener('click', () => {
   playGame('scissors');
 });
 
+autoPlayElement.addEventListener('click', () => {
+  autoPlay();
+});
+
+resetScoreElement.addEventListener('click', () => {
+  resetConfirmation();
+});
+
 document.body.addEventListener('keydown', (event) => {
+  //console.log(event.key);
   if (event.key === 'r') {
     playGame('rock');
   } else if (event.key === 'p') {
     playGame('paper');
   } else if (event.key === 's') {
     playGame('scissors');
+  } else if (event.key === 'a') {
+    autoPlay();
+  } else if (event.key === 'Backspace') {
+    resetConfirmation();
   }
 });
 
@@ -130,10 +156,6 @@ function playGame(playerMove) {
   scoreElement.innerText = `Wins: ${score.wins}, Losses: ${score.losses}, Ties: ${score.ties}`;
 
   localStorage.setItem('score', JSON.stringify(score));
-
-
-  //alert(`You picked ${playerMove} \nComputer picked ${compMove} \n${result} \nWins: ${score.wins}, Losses: ${score.losses}, Ties: ${score.ties}`);
-
 }
 
 function pickCompMove() {
